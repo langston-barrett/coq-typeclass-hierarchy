@@ -1,0 +1,15 @@
+#!/bin/sh
+
+cat > Make <<EOF
+# Include this directory in the search path
+-R ./src TypeclassHierarchy
+
+# Source files (filled by configure)
+EOF
+
+find src/Util -name "*.v" >> Make
+find src/Interfaces -name "*.v" >> Make
+find src/Instances -name "*.v" >> Make
+find src/Tests -name "*.v" >> Make
+
+${COQBIN}coq_makefile -f Make -o Makefile
