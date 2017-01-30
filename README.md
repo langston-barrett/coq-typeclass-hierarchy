@@ -1,20 +1,40 @@
-# coq-typeclass-hierarchy
+# Coq Typeclass Hierarchy
+
+[![Build Status](https://travis-ci.org/siddharthist/coq-typeclass-hierarchy.svg?branch=master)](https://travis-ci.org/siddharthist/coq-typeclass-hierarchy)
 
 This project aims to bring a full-featured hierarchy of typeclasses for
 functional programming to Coq, inspired by Haskell
 and [PureScript][purescript-prelude].
 
+## Table of Contents
+
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
+**Table of Contents**
+
+- [Coq Typeclass Hierarchy](#coq-typeclass-hierarchy)
+    - [Table of Contents](#table-of-contents)
+    - [The Hierarchy](#the-hierarchy)
+    - [Installation](#installation)
+    - [Usage](#usage)
+        - [Modules and Importing](#modules-and-importing)
+        - [Documentation](#documentation)
+    - [Contributing](#contributing)
+    - [Design and Related Work](#design-and-related-work)
+
+<!-- markdown-toc end -->
+
+
 ## The Hierarchy
 
 ![Typeclass Hierarchy Inclusion Diagram](./doc/diagram.png)
  
- - Solid arrows point from the general to the specific - if there is an arrow from
-`Foo` to `Bar` it means that every `Bar` is a `Foo`.
+ - Solid arrows point from the general to the specific - if there is an arrow
+   from `Foo` to `Bar` it means that every `Bar` is a `Foo`.
  - Green nodes are complete, with documentation and (at least one) instance(s).
  - Black nodes are defined, but have no accompanying instances or documentation.
  - Red nodes are incomplete, but planned.
  
-## Installation and Usage
+## Installation
 
 You can build this package using the [Nix][nix] package manager:
 ```
@@ -42,12 +62,29 @@ in stdenv.mkDerivation {
 ```
 Otherwise, just copy what you built to somewhere that Coq will find it.
 
-## Documentation
+## Usage
+
+### Modules and Importing
+
+Each module in `TypeclassHierarchy.Interfaces` defines all the classes that fall
+under that one in the tree. For instance,
+`TypeclassHierarchy.Interfaces.Functor` defines `Functor`, `Applicative`,
+`Monad`, etc.
+
+### Documentation
 Run
 ```
 ./configure && make html && firefox html/toc.html
 ```
 to build the API documentation with `coqdoc`.
+
+## Contributing
+Pull requests for fixes, new classes, extra instances, or more tests are
+welcome! Just run
+```
+nix-shell
+```
+to be dropped into a shell with all dependencies installed.
  
 ## Design and Related Work
 
