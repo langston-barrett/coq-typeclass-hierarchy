@@ -1,6 +1,9 @@
 Require Import Coq.Program.Basics.
+Require Import TypeclassHierarchy.Instances.Functor.Identity.
+Require Import TypeclassHierarchy.Instances.Functor.Maybe.
+Require Import TypeclassHierarchy.Instances.Functor.Writer.
+Require Import TypeclassHierarchy.Instances.Semigroup.
 Require Import TypeclassHierarchy.Interfaces.Functor.
-Require Import TypeclassHierarchy.Instances.Functor.
 
 (** Functor *)
 Definition f1 : fmap S (Id 5) = Id 6. now compute. Defined.
@@ -27,20 +30,9 @@ Definition m4 : bind (bind (Just 5) (compose pure S)) (compose pure S) = Just 7.
   now compute.
 Defined.
 
-(* newtype Writer w a = Writer { runWriter :: (a,w) }  *)
- 
-(* instance (Monoid w) => Monad (Writer w) where  *)
-(*     return a             = Writer (a,mempty)  *)
-(*     (Writer (a,w)) >>= f = let (a',w') = runWriter $ f a in Writer (a',w `mappend` w') *)
-
-(* class (Monoid w, Monad m) => MonadWriter w m | m -> w where *)
-(*     pass   :: m (a,w -> w) -> m a  *)
-(*     listen :: m a -> m (a,w)  *)
-(*     tell   :: w -> m ()  *)
- 
-(* instance (Monoid w) => MonadWriter w (Writer w) where  *)
-(*     pass   (Writer ((a,f),w)) = Writer (a,f w)  *)
-(*     listen (Writer (a,w))     = Writer ((a,w),w)  *)
-(*     tell   s                  = Writer ((),s)  *)
-
-(** TODO: test writer *)
+Definition m5 : @pure (Writer (list nat)) Writer_Applicative nat 5  = (nil, 5).
+  now compute.
+Defined.
+Definition m6 : @fmap (Writer (list nat)) SG_Writer_Functor nat nat S (@pure (Writer (list nat)) Writer_Applicative nat 5)  = (nil, 6).
+  now compute.
+Defined.
