@@ -1,4 +1,6 @@
-# { stdenv, fetchFromGitHub, coq }:
+{
+  pkgs ? import <nixpkgs> { }
+}:
 
 # To use: run `nix-shell` or `nix-shell --run "exec zsh"`
 # https://nixos.org/wiki/Development_Environments
@@ -6,8 +8,7 @@
 
 let
   # Pin a nixpkgs version
-  _nixpkgs = import <nixpkgs> { };
-  pkgs = import (_nixpkgs.fetchFromGitHub {
+  pinned_pkgs = import (pkgs.fetchFromGitHub {
     owner  = "NixOS";
     repo   = "nixpkgs";
     # This is the commit that included math-classes. Thanks @vbgl!
@@ -15,10 +16,9 @@ let
     sha256 = "14s283bwh77266zslc96gr7zqaijq5b9k4wp272ry27j5q8l3h4i";
   }) {};
 
-  coq = pkgs.coq_8_5;
-  self = with pkgs; callPackage ./default.nix { };
+  coq = pinned_pkgs.coq_8_5;
 
-in with pkgs; stdenv.mkDerivation {
+in with pinned_pkgs; stdenv.mkDerivation {
   name = "coq${coq.coq-version}-typeclass-hierarchy";
   src = ./.;
   buildInputs = [ coq coqPackages_8_5.math-classes ];
