@@ -29,15 +29,15 @@
         [.\node [planned] (AZ) {ArrowZero};
           [.\node [planned] (AS) {ArrowPlus};]]]]]
   [.\node [done] (SG) {Semigroup};
-    [.\node [done] (MD) {Monoid};]]
-  [.\node [half] (AY) {Apply}; ]
+    [.\node[root] (E1) {}; [.\node [done] (MD) {Monoid};]]]
   [.\node [done] (FU) {Functor};
-    [.\node [done] (AP) {Applicative};
-      [.\node [planned] (AT) {Alternative}; ]
-      [.\node [half] (BI) {Bind};
+    [.\node [half] (AY) {Apply};
+      [.\node [done] (AP) {Applicative};
+        [.\node [planned] (AT) {Alternative}; ]
         [.\node [done] (MO) {Monad};
           [.\node [planned] (MP) {MonadPlus}; ]
-          [.\node [planned] (MF) {MonadFix};  ]]]]
+          [.\node [planned] (MF) {MonadFix};  ]]]
+      [.\node [half] (BI) {Bind};]]
     [.\node[root] (E1) {}; [.\node [planned] (CO) {Comonad}; ]]]
   [.\node [planned] (FO) {Foldable};
     [.\node[root] (E2) {}; [.\node [planned] (TR) {Traversible}; ]]]]
@@ -57,21 +57,22 @@
   % Monoid
   \draw (SG.east) -- (MD.west);
   \draw (MD.north) -- (AS.south);
-  \draw (MD.east) -- (MP.west);
-  \draw (MD.south) to[bend right] (AT.west);
+  \draw (MD.east) to[bend left] (MP.north);
+  \draw (MD.south) -- (AT.west);
 
-  % Apply
-  \draw (AY.south) to[bend right] (AP.west);
 
   % Functor
-  \draw (FU.north) to[bend left] (AP.west);
+  \draw (FU.north) to[bend left] (AY.west);
   \draw (FU.east) to[bend left] (CO.west);
   \draw (FU.south) -- (TR.west);
+    % Apply
+    \draw (AY.north) to[bend left] (AP.west);
+    \draw (AY.east) to[bend left] (BI.west);
     % Applicative
     \draw (AP.north) to[bend left] (AT.west);
-    \draw (AP.east) -- (BI.west);
+    \draw (AP.south) -- (MO.west);
       % Bind
-      \draw (BI.east) -- (MO.west);
+      \draw (BI.north) to[bend left] (MO.west);
         % Monad
         \draw (MO.north) to[bend left] (MP.west);
         \draw (MO.east) -- (MF.west);
