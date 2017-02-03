@@ -81,10 +81,21 @@ Definition Maybe_ap (A B : Type) (f : Maybe (A -> B)) (a : Maybe A) : Maybe B :=
     | Nothing => Nothing
   end.
 
+Instance Maybe_Apply :
+  Apply Maybe := { apply_functor := Maybe_Functor
+                 ; ap            := Maybe_ap
+                 }.
+Proof.
+  intros.
+  compute.
+  case g; try trivial.
+  case f; try trivial.
+  case a; trivial.
+Defined.
+
 Instance Maybe_Applicative :
-  Applicative Maybe := { applicative_functor := Maybe_Functor
-                       ; pure := (fun _ x => Just x)
-                       ; ap := Maybe_ap
+  Applicative Maybe := { applicative_apply := Maybe_Apply
+                       ; pure              := (fun _ x => Just x)
                        }.
 Proof.
   { (* ap_identity *)
@@ -104,5 +115,35 @@ Proof.
     intros.
     compute.
     case g; case f; case a; trivial.
+  }
+Defined.
+
+Definition Maybe_bind (A B : Type) (x : Maybe A) (f : A -> Maybe B) : Maybe B :=
+  match x with
+    | Just x' => f x'
+    | Nothing => Nothing
+ end.
+
+Instance Maybe_Bind :
+  Bind Maybe := { bind_apply := Maybe_Apply
+                ; bind       := Maybe_bind
+                }.
+Proof.
+  compute.
+  intros.
+  case x; try trivial.
+Defined.
+
+Instance Maybe_Monad :
+  Monad Maybe := { monad_applicative := Maybe_Applicative
+                 ; monad_bind        := Maybe_Bind
+                 }.
+Proof.
+  { (* left identity *)
+    trivial.
+  }
+  { (* right identity *)
+    intros A B f x.
+    case x; try trivial.
   }
 Defined.
