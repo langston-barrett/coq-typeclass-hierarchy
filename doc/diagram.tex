@@ -14,6 +14,7 @@
   [nodes={draw, ellipse, very thick, text=black, minimum size=0.8cm}, arrows={-Latex[length=1mm,width=0.7mm]}, level distance=3.4cm, grow'=right, sibling distance=0.3cm, scale=0.4]
   \tikzset{top/.style={color=red, text=black}}
   \tikzset{planned/.style={color=red, text=black}}
+  \tikzset{half/.style={color=black, text=black}}
   \tikzset{done/.style={color=green, text=black}}
   \tikzset{root/.style={minimum size=0mm, minimum width=0mm, inner sep=0mm, outer sep=0mm, level distance=0mm}}
   \tikzset{level 1/.style={level distance=1.5cm}}
@@ -29,12 +30,12 @@
           [.\node [planned] (AS) {ArrowPlus};]]]]]
   [.\node [done] (SG) {Semigroup};
     [.\node [done] (MD) {Monoid};]]
-  [.\node [planned] (AY) {Apply}; ]
+  [.\node [half] (AY) {Apply}; ]
   [.\node [done] (FU) {Functor};
     [.\node [done] (AP) {Applicative};
       [.\node [planned] (AT) {Alternative}; ]
-      [.\node [planned] (BI) {Bind};
-        [.\node [planned] (MO) {Monad};
+      [.\node [half] (BI) {Bind};
+        [.\node [done] (MO) {Monad};
           [.\node [planned] (MP) {MonadPlus}; ]
           [.\node [planned] (MF) {MonadFix};  ]]]]
     [.\node[root] (E1) {}; [.\node [planned] (CO) {Comonad}; ]]]
