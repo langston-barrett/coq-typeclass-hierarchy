@@ -26,3 +26,21 @@ Definition m3 : forall A, bind (Nothing : Maybe A) pure = Nothing. now compute. 
 Definition m4 : bind (bind (Just 5) (compose pure S)) (compose pure S) = Just 7.
   now compute.
 Defined.
+
+(* newtype Writer w a = Writer { runWriter :: (a,w) }  *)
+ 
+(* instance (Monoid w) => Monad (Writer w) where  *)
+(*     return a             = Writer (a,mempty)  *)
+(*     (Writer (a,w)) >>= f = let (a',w') = runWriter $ f a in Writer (a',w `mappend` w') *)
+
+(* class (Monoid w, Monad m) => MonadWriter w m | m -> w where *)
+(*     pass   :: m (a,w -> w) -> m a  *)
+(*     listen :: m a -> m (a,w)  *)
+(*     tell   :: w -> m ()  *)
+ 
+(* instance (Monoid w) => MonadWriter w (Writer w) where  *)
+(*     pass   (Writer ((a,f),w)) = Writer (a,f w)  *)
+(*     listen (Writer (a,w))     = Writer ((a,w),w)  *)
+(*     tell   s                  = Writer ((),s)  *)
+
+(** TODO: test writer *)
