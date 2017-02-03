@@ -20,7 +20,6 @@ Definition a7 : ap (Just S) Nothing = Nothing. now compute. Defined.
 (** TODO: Bind *)
 
 (** Monad *)
-Check bind.
 Definition m1 : bind (Just 5) pure = Just 5. now compute. Defined.
 Definition m2 : bind (Just 0) (compose pure S) = Just 1. now compute. Defined.
 Definition m3 : forall A, bind (Nothing : Maybe A) pure = Nothing. now compute. Defined.
