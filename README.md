@@ -1,6 +1,8 @@
 # Coq Typeclass Hierarchy
 
+<!-- Shamelessly stolen readthedocs.io badge -->
 [![Build Status](https://travis-ci.org/siddharthist/coq-typeclass-hierarchy.svg?branch=master)](https://travis-ci.org/siddharthist/coq-typeclass-hierarchy)
+[![Documentation](https://readthedocs.org/projects/docs/badge/?version=latest)](https://siddharthist.github.io/coq-typeclass-hierarchy/html/toc.html)
 
 This project aims to bring a full-featured hierarchy of typeclasses for
 functional programming to Coq, inspired by Haskell
