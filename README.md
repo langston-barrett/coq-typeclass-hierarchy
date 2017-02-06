@@ -47,13 +47,20 @@ Alternatively, you can use the the standard
 ```
 
 If you're using [Nix][nix], you can easily intergrate this library with your own
-package's `default.nix` or `shell.nix`, and your `COQPATH` environment variable
-will automatically be set correctly.
+package's `default.nix` or `shell.nix`, and Coq should automatically find it.
 ```nix
-{ stdenv, coq }:
+{
+  stdenv,
+  coq,
+  pkgs ? import <nixpkgs> { }
+}:
 let
-  coq_typeclasses = 
-    pkgs.callPackage ./path/to/coq-typeclass-hierarchy/default.nix { };
+  coq_typeclass_hierarchy = with pkgs; callPackage (fetchFromGitHub {
+    owner  = "siddharthist";
+    repo   = "coq-typeclass-hierarchy";
+    rev    = "c079b02364c94b7aa18fc6cb02921ad6a76eb20e"; # customize this
+    sha256 = "1l5h02k0j2df4r8jvvf8nws777rda4piy2mfmvl5k2fgwz9slb1r"; # and this
+  }) { };
 in stdenv.mkDerivation {
   name = "my-coq-project";
   src = ./.;
