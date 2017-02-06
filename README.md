@@ -19,12 +19,11 @@ and [PureScript][purescript-prelude].
     - [Installation](#installation)
     - [Usage](#usage)
         - [Modules and Importing](#modules-and-importing)
-        - [Documentation](#documentation)
+        - [API Documentation](#api-documentation)
     - [Contributing](#contributing)
     - [Design and Related Work](#design-and-related-work)
 
 <!-- markdown-toc end -->
-
 
 ## The Hierarchy
 
@@ -73,12 +72,11 @@ under that one in the tree. For instance,
 `TypeclassHierarchy.Interfaces.Functor` defines `Functor`, `Applicative`,
 `Monad`, etc.
 
-### Documentation
-Run
+### API Documentation
+You can [view the documentation online][docs], but to build it locally, run
 ```
 ./configure && make html && firefox html/toc.html
 ```
-to build the API documentation with `coqdoc`.
 
 ## Contributing
 Pull requests for fixes, new classes, extra instances, or more tests are
@@ -118,6 +116,7 @@ libraries:
        this axiom, the laws and interfaces are unbundled, as in Haskell. This
        causes us to lose the compile-time guarantees of Coq.
 
+[docs]: https://siddharthist.github.io/coq-typeclass-hierarchy/html/toc.html
 [nix]: https://nixos.org/nix/
 [math-classes]: https://github.com/math-classes/math-classes
 [purescript-prelude]: https://github.com/purescript/purescript-prelude
