@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>TypeclassHierarchy.Instances.Functor.Maybe</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library TypeclassHierarchy.Instances.Functor.Maybe</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Program.Basics.html#"><span class="id" title="library">Coq.Program.Basics</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="TypeclassHierarchy.Util.FunctionSetoid.html#"><span class="id" title="library">TypeclassHierarchy.Util.FunctionSetoid</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#"><span class="id" title="library">TypeclassHierarchy.Interfaces.Functor</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="Maybe"><span class="id" title="inductive">Maybe</span></a> (<span class="id" title="var">T</span> : <span class="id" title="keyword">Type</span>) : <span class="id" title="keyword">Type</span> :=<br/>
+&nbsp;&nbsp;| <a name="Just"><span class="id" title="constructor">Just</span></a> : <span class="id" title="var">T</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <span class="id" title="var">T</span><br/>
+&nbsp;&nbsp;| <a name="Nothing"><span class="id" title="constructor">Nothing</span></a> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <span class="id" title="var">T</span>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a> {<span class="id" title="var">T</span>}.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> {<span class="id" title="var">T</span>} <span class="id" title="var">_</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="Maybe_fmap"><span class="id" title="definition">Maybe_fmap</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">f</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a>) (<span class="id" title="var">a</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a>) : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#a"><span class="id" title="variable">a</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> <span class="id" title="var">j</span> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> (<a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="var">j</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="Maybe_Functor"><span class="id" title="instance">Maybe_Functor</span></a> : <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#Functor"><span class="id" title="class">Functor</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> := { <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#fmap"><span class="id" title="method">fmap</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_fmap"><span class="id" title="definition">Maybe_fmap</span></a> }.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">B</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">x</span> <span class="id" title="var">y</span> <span class="id" title="var">Hyp</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">b</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">now</span> <span class="id" title="tactic">rewrite</span> (<span class="id" title="var">Hyp</span> <span class="id" title="var">b</span>).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">A</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">a</span>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">C</span> <span class="id" title="var">h</span> <span class="id" title="var">g</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">a</span>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="Maybe_ap"><span class="id" title="definition">Maybe_ap</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">f</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> (<a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a>)) (<span class="id" title="var">a</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a>) : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> <span class="id" title="var">f'</span> ⇒ <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#fmap"><span class="id" title="method">fmap</span></a> <span class="id" title="var">f'</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#a"><span class="id" title="variable">a</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="Maybe_Apply"><span class="id" title="instance">Maybe_Apply</span></a> :<br/>
+&nbsp;&nbsp;<a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#Apply"><span class="id" title="class">Apply</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> := { <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#apply_functor"><span class="id" title="method">apply_functor</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_Functor"><span class="id" title="instance">Maybe_Functor</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#ap"><span class="id" title="method">ap</span></a>            := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_ap"><span class="id" title="definition">Maybe_ap</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">g</span>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">f</span>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">a</span>; <span class="id" title="tactic">trivial</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="Maybe_Applicative"><span class="id" title="instance">Maybe_Applicative</span></a> :<br/>
+&nbsp;&nbsp;<a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#Applicative"><span class="id" title="class">Applicative</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> := { <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#applicative_apply"><span class="id" title="method">applicative_apply</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_Apply"><span class="id" title="instance">Maybe_Apply</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#pure"><span class="id" title="method">pure</span></a>              := (<span class="id" title="keyword">fun</span> <span class="id" title="var">_</span> <span class="id" title="var">x</span> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#x"><span class="id" title="variable">x</span></a>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">a</span>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="var">now</span> <span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">f</span>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">intros</span>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">g</span>; <span class="id" title="tactic">case</span> <span class="id" title="var">f</span>; <span class="id" title="tactic">case</span> <span class="id" title="var">a</span>; <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="Maybe_bind"><span class="id" title="definition">Maybe_bind</span></a> (<span class="id" title="var">A</span> <span class="id" title="var">B</span> : <span class="id" title="keyword">Type</span>) (<span class="id" title="var">x</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a>) (<span class="id" title="var">f</span> : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a>) : <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#B"><span class="id" title="variable">B</span></a> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#x"><span class="id" title="variable">x</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Just"><span class="id" title="constructor">Just</span></a> <span class="id" title="var">x'</span> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#f"><span class="id" title="variable">f</span></a> <span class="id" title="var">x'</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;| <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a> ⇒ <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Nothing"><span class="id" title="constructor">Nothing</span></a><br/>
+&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="Maybe_Bind"><span class="id" title="instance">Maybe_Bind</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Bind</span> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> := { <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#bind_apply"><span class="id" title="method">bind_apply</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_Apply"><span class="id" title="instance">Maybe_Apply</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#bind"><span class="id" title="method">bind</span></a>       := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_bind"><span class="id" title="definition">Maybe_bind</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">compute</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">intros</span>.<br/>
+&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">x</span>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">trivial</span>.<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="Maybe_Monad"><span class="id" title="instance">Maybe_Monad</span></a> :<br/>
+&nbsp;&nbsp;<a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#Monad"><span class="id" title="class">Monad</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe"><span class="id" title="inductive">Maybe</span></a> := { <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#monad_applicative"><span class="id" title="method">monad_applicative</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_Applicative"><span class="id" title="instance">Maybe_Applicative</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Functor.html#monad_bind"><span class="id" title="method">monad_bind</span></a>        := <a class="idref" href="TypeclassHierarchy.Instances.Functor.Maybe.html#Maybe_Bind"><span class="id" title="instance">Maybe_Bind</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">A</span> <span class="id" title="var">B</span> <span class="id" title="var">f</span> <span class="id" title="var">x</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">case</span> <span class="id" title="var">x</span>; <span class="id" title="tactic">try</span> <span class="id" title="tactic">trivial</span>.<br/>
+&nbsp;&nbsp;}<br/>
+<span class="id" title="keyword">Defined</span>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>TypeclassHierarchy.Instances.Semigroup</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library TypeclassHierarchy.Instances.Semigroup</h1>
+
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#"><span class="id" title="library">Coq.Init.Datatypes</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Lists.List.html#"><span class="id" title="library">Coq.Lists.List</span></a>.<br/>
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#"><span class="id" title="library">TypeclassHierarchy.Interfaces.Semigroup</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="List_Semigroup"><span class="id" title="instance">List_Semigroup</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">A</span> : <span class="id" title="keyword">Set</span>, <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#Semigroup"><span class="id" title="class">Semigroup</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#A"><span class="id" title="variable">A</span></a>) := { <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a>             := @<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#app"><span class="id" title="definition">app</span></a> <span class="id" title="var">A</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op_associative"><span class="id" title="method">sg_op_associative</span></a> := @<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Lists.List.html#app_assoc"><span class="id" title="lemma">app_assoc</span></a> <span class="id" title="var">A</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Instance</span> <a name="List_Monoid"><span class="id" title="instance">List_Monoid</span></a> :<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">∀</span> <span class="id" title="var">A</span> : <span class="id" title="keyword">Set</span>, <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#Monoid"><span class="id" title="class">Monoid</span></a> (<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#list"><span class="id" title="inductive">list</span></a> <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#A"><span class="id" title="variable">A</span></a>) := { <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#monoid_semigroup"><span class="id" title="method">monoid_semigroup</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#List_Semigroup"><span class="id" title="instance">List_Semigroup</span></a> <span class="id" title="var">A</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#unit"><span class="id" title="method">unit</span></a>             := <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#nil"><span class="id" title="constructor">nil</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#left_identity"><span class="id" title="method">left_identity</span></a>    := @<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Lists.List.html#app_nil_l"><span class="id" title="lemma">app_nil_l</span></a> <span class="id" title="var">A</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#right_identity"><span class="id" title="method">right_identity</span></a>   := @<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Lists.List.html#app_nil_r"><span class="id" title="lemma">app_nil_r</span></a> <span class="id" title="var">A</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="Nat_Monoid"><span class="id" title="section">Nat_Monoid</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Instance</span> <a name="Nat_Semigroup"><span class="id" title="instance">Nat_Semigroup</span></a> : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#Semigroup"><span class="id" title="class">Semigroup</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a>             := <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Peano.html#plus"><span class="id" title="abbreviation">plus</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op_associative"><span class="id" title="method">sg_op_associative</span></a> := <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Arith.Plus.html#plus_assoc"><span class="id" title="abbreviation">Plus.plus_assoc</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Instance</span> <a name="Nat_Monoid"><span class="id" title="instance">Nat_Monoid</span></a> : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#Monoid"><span class="id" title="class">Monoid</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> :=<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#monoid_semigroup"><span class="id" title="method">monoid_semigroup</span></a> := <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#Nat_Semigroup"><span class="id" title="instance">Nat_Semigroup</span></a><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#unit"><span class="id" title="method">unit</span></a>             := 0<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Proof</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{ <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#Nat_Semigroup"><span class="id" title="instance">Nat_Semigroup</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Peano.html#plus_O_n"><span class="id" title="lemma">plus_O_n</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">unfold</span> <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#Nat_Semigroup"><span class="id" title="instance">Nat_Semigroup</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">intros</span> <span class="id" title="var">a</span>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> (<a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#eq_sym"><span class="id" title="lemma">eq_sym</span></a> (<span class="id" title="var">x</span> := <span class="id" title="var">a</span>) (<span class="id" title="var">y</span> := <span class="id" title="var">a</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Peano.html#b3eea360671e1b32b18a26e15b3aace3"><span class="id" title="notation">+</span></a> 0)).<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="id" title="tactic">apply</span> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Peano.html#plus_n_O"><span class="id" title="lemma">plus_n_O</span></a>.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Defined</span>.<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="TypeclassHierarchy.Instances.Semigroup.html#Nat_Monoid"><span class="id" title="section">Nat_Monoid</span></a>.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>

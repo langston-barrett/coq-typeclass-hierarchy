@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<title>TypeclassHierarchy.Interfaces.Semigroup</title>
+</head>
+
+<body>
+
+<div id="page">
+
+<div id="header">
+</div>
+
+<div id="main">
+
+<h1 class="libtitle">Library TypeclassHierarchy.Interfaces.Semigroup</h1>
+
+<div class="code">
+</div>
+
+<div class="doc">
+ A semigroup is a Type with equipped with an associative binary operation.
+
+<div class="paragraph"> </div>
+
+ The only law is associativity:
+<ul class="doclist">
+<li> sg_op a (sg_op b c) = sg_op (sg_op a b) c
+
+</li>
+</ul>
+
+<div class="paragraph"> </div>
+
+ As always, lot of the notation (e.g. setoid/extensional equality) is desugared
+ to reduce the need for (slow and somewhat unreliable) type inference.
+ 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Class</span> <a name="Semigroup"><span class="id" title="record">Semigroup</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Set</span>) : <span class="id" title="keyword">Set</span> :=<br/>
+&nbsp;&nbsp;{ <a name="sg_op"><span class="id" title="projection">sg_op</span></a>             : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#d43e996736952df71ebeeae74d10a287"><span class="id" title="notation">→</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;; <a name="sg_op_associative"><span class="id" title="projection">sg_op_associative</span></a> : <span class="id" title="keyword">∀</span> <span class="id" title="var">a</span> <span class="id" title="var">b</span> <span class="id" title="var">c</span> : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a>, <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a> (<a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#b"><span class="id" title="variable">b</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#c"><span class="id" title="variable">c</span></a>) <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> (<a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#b"><span class="id" title="variable">b</span></a>) <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#c"><span class="id" title="variable">c</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+ A monoid is a semigroup with an identity element.
+
+<div class="paragraph"> </div>
+
+ The only additional law is identity:
+<ul class="doclist">
+<li> sg_op unit a = a = sg_op a unit
+
+</li>
+</ul>
+ 
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Class</span> <a name="Monoid"><span class="id" title="record">Monoid</span></a> (<span class="id" title="var">A</span> : <span class="id" title="keyword">Set</span>) : <span class="id" title="keyword">Set</span> :=<br/>
+&nbsp;&nbsp;{ <a name="monoid_semigroup"><span class="id" title="projection">monoid_semigroup</span></a> :&gt; <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#Semigroup"><span class="id" title="class">Semigroup</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;; <a name="unit"><span class="id" title="projection">unit</span></a>             : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a><br/>
+&nbsp;&nbsp;; <a name="left_identity"><span class="id" title="projection">left_identity</span></a>    : <span class="id" title="keyword">∀</span> <span class="id" title="var">a</span> : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a>, <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#unit"><span class="id" title="method">unit</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a><br/>
+&nbsp;&nbsp;; <a name="right_identity"><span class="id" title="projection">right_identity</span></a>   : <span class="id" title="keyword">∀</span> <span class="id" title="var">a</span> : <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#A"><span class="id" title="variable">A</span></a>, <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#sg_op"><span class="id" title="method">sg_op</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#unit"><span class="id" title="method">unit</span></a> <a class="idref" href="http://coq.inria.fr/distrib/8.5pl3/stdlib/Coq.Init.Logic.html#1c39bf18749e5cc609e83c0a0ba5a372"><span class="id" title="notation">=</span></a> <a class="idref" href="TypeclassHierarchy.Interfaces.Semigroup.html#a"><span class="id" title="variable">a</span></a><br/>
+&nbsp;&nbsp;}.<br/>
+</div>
+</div>
+
+<div id="footer">
+<hr/><a href="index.html">Index</a><hr/>This page has been generated by <a href="http://coq.inria.fr/">coqdoc</a>
+</div>
+
+</div>
+
+</body>
+</html>
