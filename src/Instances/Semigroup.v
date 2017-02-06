@@ -13,3 +13,29 @@ Instance List_Monoid :
                                 ; left_identity    := @app_nil_l A
                                 ; right_identity   := @app_nil_r A
                                 }.
+
+Section Nat_Monoid.
+  Instance Nat_Semigroup : Semigroup nat :=
+    { sg_op             := plus
+    ; sg_op_associative := Plus.plus_assoc
+    }.
+
+  Instance Nat_Monoid : Monoid nat :=
+    { monoid_semigroup := Nat_Semigroup
+    ; unit             := 0
+    }.
+  Proof.
+    { (* Left identity *)
+      unfold sg_op.
+      unfold Nat_Semigroup.
+      apply plus_O_n.
+    }
+    {
+      unfold sg_op.
+      unfold Nat_Semigroup.
+      intros a.
+      apply (eq_sym (x := a) (y := a + 0)).
+      apply plus_n_O.
+    }
+  Defined.
+End Nat_Monoid.
